@@ -1,4 +1,6 @@
 class MainController < ApplicationController
+    before_action :must_be_logged_in, only: %i[ user_Item ]
+
     def login
     end
 

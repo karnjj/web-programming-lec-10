@@ -1,0 +1,45 @@
+<h1>User <%= @seller.name %> Shop</h1>
+
+<div id='user-shop-table'>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @seller.items.each do |item| %>
+                <% if item.stock > 0 %>
+                    <tr>
+                        <th scope="row">
+                            <%= item.id %>
+                        </th> 
+                        <td>
+                            <%= item.name %>
+                        </td>
+                        <td>
+                            <%= item.price %>
+                        </td>
+                        <td>
+                            <%= item.stock %>
+                        </td>
+                        <td>
+                            <% if is_login? %>
+                                <%= button_to "Buy", 
+                                    shop_buy_path(@seller.id), 
+                                    params: { item_id: item.id }, 
+                                    method: :post, 
+                                    class: 'btn btn-primary' 
+                                %>
+                            <% end %>
+                        </td>
+                    </tr>
+                <% end %>
+            <% end %>
+        </tbody>
+    </table>
+</div>
