@@ -27,6 +27,11 @@
   </div>
 
   <div>
+    <%= form.label :image, style: "display: block" %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div>
     <% if session[:user_id] %>
       <%= form.hidden_field :user_id, :value => session[:user_id] %>
     <% else %>

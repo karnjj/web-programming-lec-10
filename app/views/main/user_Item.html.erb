@@ -5,6 +5,7 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
+                <th scope="col">Image</th>
                 <th scope="col">Name</th>
                 <th scope="col">Price</th>
                 <th scope="col">Stock</th>
@@ -16,7 +17,10 @@
                 <tr>
                     <th scope="row">
                         <%= item.id %>
-                    </th> 
+                    </th>
+                    <td>
+                        <%= image_tag rails_blob_path(item.image.variant(:thumb), disposition: "attachment"), class: 'rounded' %>
+                    </td> 
                     <td>
                         <%= item.name %>
                     </td>

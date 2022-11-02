@@ -22,7 +22,7 @@ class ItemsController < ApplicationController
   # POST /items or /items.json
   def create
     @item = Item.new(item_params)
-
+    @item.image.attach(item_params[:image])
     respond_to do |format|
       if @item.save
         if session[:prev_page] === "user_item_page"
@@ -42,6 +42,7 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
+        @item.image.attach(item_params[:image])
         if session[:prev_page] === "user_item_page"
           format.html { redirect_to user_item_path }
         else
@@ -77,6 +78,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:name, :stock, :price, :user_id)
+      params.require(:item).permit(:name, :stock, :price, :image, :user_id)
     end
 end
