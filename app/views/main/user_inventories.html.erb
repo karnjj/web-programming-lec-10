@@ -1,0 +1,36 @@
+<h1>User Inventories</h1>
+
+<div id='user_inventories-table'>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Item Name</th>
+                <th scope="col">Seller Name</th>
+                <th scope="col">Buy Price</th>
+                <th scope="col">Buy At</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @inventories.each do |inventory| %>
+                <tr>
+                    <th scope="row">
+                        <%= inventory.id %>
+                    </th> 
+                    <td>
+                        <%= inventory.item.name %>
+                    </td>
+                    <td>
+                        <%= inventory.item.user.name %>
+                    </td>
+                    <td>
+                        <%= inventory.price %>
+                    </td>
+                    <td>
+                        <%= inventory.created_at %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

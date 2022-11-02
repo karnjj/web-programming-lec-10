@@ -1,5 +1,5 @@
 class MainController < ApplicationController
-    before_action :must_be_logged_in, only: %i[ user_Item ]
+    before_action :must_be_logged_in, only: %i[ user_Item user_inventories ]
 
     def login
     end
@@ -24,5 +24,11 @@ class MainController < ApplicationController
         user = User.find(user_id)
         @items = user.items
         session[:prev_page] = 'user_item_page'
+    end
+
+    def user_inventories
+        user_id = session[:user_id]
+        user = User.find(user_id)
+        @inventories = user.inventories
     end
 end
