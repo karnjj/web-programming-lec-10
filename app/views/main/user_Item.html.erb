@@ -1,0 +1,42 @@
+<h1>User Item</h1>
+
+<div id='user-item-table'>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @items.each do |item| %>
+                <tr>
+                    <th scope="row">
+                        <%= item.id %>
+                    </th> 
+                    <td>
+                        <%= item.name %>
+                    </td>
+                    <td>
+                        <%= item.price %>
+                    </td>
+                    <td>
+                        <%= item.stock %>
+                    </td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <%= link_to "Edit", edit_item_path(item), class: 'btn btn-warning' %>
+                            <%= link_to "Delete", item, data: { turbo_method: :delete }, class: 'btn btn-danger' %>
+                        </div>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
+
+<%= link_to "New Item", new_item_path, class: 'btn btn-primary' %>
+
